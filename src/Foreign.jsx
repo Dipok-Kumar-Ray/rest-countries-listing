@@ -23,7 +23,7 @@ const Foreign = ({countriesPromise}) => {
         <div>
             <h1>Traveling Countries : {foreign.length}</h1>
             <h3>Travel to far : {visitedCountries.length}</h3>
-            <div>
+            <div className='countries'>
                 {
                    visitedFlags.map(flag => <img key={flag.cca3} src={flag.flags.png} alt="" />) 
                 }
@@ -33,24 +33,49 @@ const Foreign = ({countriesPromise}) => {
                     visitedCountries.map(country => <li key={country.cca3}>{country.name.common}</li>)
                 }
             </ol>
-            <div className='countries'>
+            {/* <div className='countries'> */}
+
+                {/*start eo;iifjoaerfjaerfjerfje */}
+
+                <div className='countries'>
+                
                 {
-                    foreign.map(country => {
+                    foreign.map(country =>  
+                        <countries key={country.cca3}
+                        handleVisitedCountries={handleVisitedCountries}
+                        handleVisitedFlags={handleVisitedFlags}
+                        country={country}
+                        ></countries>
+                    )
+
+                }
+
+{
+                foreign.map(country => {
                         return (
-                            <div key={country.cca3} className='country'>
+                           <div key={country.cca3} className='country'>
                                 <h3>Name : {country.name.common}</h3>
                                 {/* <h3>Name : {country.name.flag}</h3> */}
                                 <img src={country.flags.png} alt="" />
                                 <p>Independent Country : {country.independent ? 'Free' : 'Not Free'}</p>
                                 <p>Population : {country.population}</p>
                                 <button className={visitedCountries.includes(country) ? 'btn-visited' : 'btn-not-visited'} onClick={() => handleVisitedCountries(country)}>{visitedCountries.includes(country) ? 'Visited' : 'Not Visited'}</button>
-                                {/* <button className={visitedFlags.includes(flag) ? 'btn-visited' : 'btn-not-visited'} onClick={() => handleVisitedFlags(flag)}>{visitedFlags.includes(flag) ? 'Visited' : 'Not Visited'}</button> */}
+                                 {/* <button className={visitedFlags.includes(flag) ? 'btn-visited' : 'btn-not-visited'} onClick={() => handleVisitedFlags(flag)}>{visitedFlags.includes(flag) ? 'Visited' : 'Not Visited'}</button> */}
                             </div>
-                        )
-                    })
-                }
-            </div>
-        </div>
+                         )
+                    }
+              )
+              }
+
+
+
+                </div>
+
+                {/*end awejf'pjfejfp'jfp'fj */}
+
+               
+             </div>
+        
     );
 };
 
